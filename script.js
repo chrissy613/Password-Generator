@@ -22,10 +22,11 @@ function writePassword() {
     confirmNumber = confirm("Would you like your password to contain numbers?");
     confirmSpecials = confirm("Would you like your password to contain special characters?");
   }
-  //ELSE IF WITH ONE OPTION SELECTED
+  //IF NO OPTIONS ARE SELECTED
   if (!confirmUpper && !confirmLower && !confirmNumber && !confirmSpecials) {
     alert("You cannot create a password without choosing options.");
   }
+  //ELSE IF WITH ONE OPTION SELECTED
   else if (confirmUpper && !confirmLower && !confirmNumber && !confirmSpecials) {
     alert("Password created with uppercase letters.");
   }
