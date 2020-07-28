@@ -1,12 +1,14 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
-var letters;
-letters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+var lowercaseLetters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+var uppercaseLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
 var numbers;
 numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 var specialChars;
 specialChars = ["`", "~", "!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "-", "_", "=", "+", "[", "{", "]", "}", ".", ",", "'", "<", ">", "/", "?"];
 var options
+var confirmUpper, confirmLower, confirmNumber, confirmSpecials, numberImput;
+
 
 // Write password to the #password input
 function writePassword() {
@@ -78,6 +80,30 @@ function writePassword() {
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
   passwordText.value = password;
+}
+function generatePassword(){
+  var combineCharacters = [];
+  if (confirmUpper) {
+    combineCharacters = combineCharacters.concat(uppercaseLetters)
+  }
+  if (confirmLower) {
+    combineCharacters = combineCharacters.concat(lowercaseLetters)
+  }
+  if (confirmNumber) {
+    combineCharacters = combineCharacters.concat(numbers)
+  }
+  if (confirmSpecials) {
+    combineCharacters = combineCharacters.concat(specialChars)
+  }
+console.log(combineCharacters);
+var generatedPW = "";
+for (var i = 0; i < numberImput; i++) {
+    var randomIndex = Math.floor(Math.random() * combineCharacters.length);
+    generatedPW += combineCharacters[randomIndex];
+    console.log(generatedPW);
+    console.log(randomIndex);
+  }
+  return generatedPW
 }
 
 // Add event listener to generate button
